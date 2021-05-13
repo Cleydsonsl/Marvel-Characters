@@ -23,7 +23,7 @@ const Dashboard: React.FC = () => {
     event: FormEvent<HTMLFormElement>,
   ): Promise<void> {
     event.preventDefault();
-    const response = await api.get(`characters/${newRepo}?`);
+    const response = await api.get<Character>(`characters/${newRepo}?`);
 
     console.log(response.data);
   }
