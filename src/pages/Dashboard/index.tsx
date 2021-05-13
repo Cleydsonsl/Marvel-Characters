@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable jsx-a11y/alt-text */
 import React, { useState, FormEvent } from 'react';
 import api from '../../services/api';
 
