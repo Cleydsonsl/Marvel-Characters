@@ -26,13 +26,6 @@
   "rules": {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "eslint-disable": [
-      "no-console",
-      "jsx-a11y/alt-text",
-      "import/prefer-default-export",
-      "prettier/prettier"
-    ],
-
     "react/jsx-filename-extension": [
       1,
       {

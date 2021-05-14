@@ -38,7 +38,7 @@ const Dashboard: React.FC = () => {
               placeholder="Search you hero"
             />
             <button type="submit">
-              <img id="imgBtn" />
+              <img id="imgBtn" alt="Search" />
             </button>
           </Form>
           <img id="marvel" src={logoMarvel} alt="Marvel" />
