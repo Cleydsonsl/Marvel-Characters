@@ -1,8 +1,15 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import styled from 'styled-components';
-import ReactModal from 'styled-react-modal';
 
 import villainImg from '../../assets/viloes.png';
 import background from '../../assets/vormir.png';
+
+interface AvatarProps {
+  thumbnail: {
+    path: string;
+    extension: string;
+  };
+}
 
 export const Background = styled.body`
   background: #f0f0f5 url(${background}) no-repeat;
@@ -39,14 +46,8 @@ export const Villain = styled.div`
   }
 `;
 
-export const Modal = styled(ReactModal)`
-  width: 20rem;
-  height: 20rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: ${props => props.theme.colors.white};
-`;
+// const urlImg = (props: AvatarProps) =>
+//   `${props.thumbnail.path}.${props.thumbnail.extension}`;
 
 export const Repositories = styled.div`
   margin-top: 40px;
@@ -75,12 +76,6 @@ export const Repositories = styled.div`
       transform: translate(10px);
     }
 
-    img {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-    }
-
     div {
       margin-left: 16px;
 
@@ -101,4 +96,12 @@ export const Repositories = styled.div`
       color: #cbcbd6;
     }
   }
+`;
+
+export const Img = styled.img<AvatarProps>`
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+
+  ${props => props.thumbnail}
 `;

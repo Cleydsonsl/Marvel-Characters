@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect, FormEvent } from 'react';
+import { useHistory } from 'react-router-dom';
 import api, { authKey } from '../../services/api';
 
 import logoMarvel from '../../assets/LOGOMARVEL.svg';
@@ -17,9 +18,19 @@ interface ICharacter {
 }
 
 const Dashboard: React.FC = () => {
+  const history = useHistory();
   const [search, setSearch] = useState('');
   const [inputError, setInputError] = useState('');
-  const [characters, setCharacters] = useState<ICharacter[]>([]);
+  const [characters, setCharacters] = useState<ICharacter[]>(() => {
+    const storagedCharacters = localStorage.getItem(
+      '@Marvel-Characters:characters',
+    );
+
+    if (storagedCharacters) {
+      return JSON.parse(storagedCharacters);
+    }
+    return [];
+  });
 
   // useEffect(() => {
   //   async function getCharacters(): Promise<void> {
@@ -63,6 +74,7 @@ const Dashboard: React.FC = () => {
       setSearch('');
       setInputError('');
       console.log(response.data);
+      history.push('/list');
     } catch (err) {
       setInputError('Digite um nome de um personagem válido');
     }
