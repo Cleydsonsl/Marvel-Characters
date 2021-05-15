@@ -1,11 +1,15 @@
 /* eslint-disable import/prefer-default-export */
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { shade } from 'polished';
 
 import background from '../../assets/esbolso.png';
 import heroesImg from '../../assets/heroes.png';
 import HidraImg from '../../assets/HIDRAPRETA.svg';
 import ShieldImg from '../../assets/SHIELDBRANCA.svg';
+
+interface FormProps {
+  hasError: boolean;
+}
 
 export const Title = styled.h1`
   font-size: 48px;
@@ -47,10 +51,9 @@ export const Heroes = styled.div`
   overflow: hidden;
 `;
 
-export const Form = styled.form`
+export const Form = styled.form<FormProps>`
   margin-top: 40px;
   max-width: 700px;
-  margin-bottom: 180px;
 
   display: flex;
 
@@ -58,8 +61,15 @@ export const Form = styled.form`
     flex: 1;
     height: 70px;
     padding: 0 24px;
-    border: 0;
+    border: 2px solid #fff;
     border-radius: 5px 0 0 5px;
+    border-right: 0;
+
+    ${props =>
+      props.hasError &&
+      css`
+        border-color: #c53030;
+      `}
 
     &::placeholder {
       color: #a8a8b3;
@@ -79,4 +89,10 @@ export const Form = styled.form`
       background-size: 40px;
     }
   }
+`;
+
+export const Error = styled.span`
+  display: block;
+  color: #c53030;
+  margin-top: 8px;
 `;

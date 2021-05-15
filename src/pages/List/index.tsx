@@ -25,6 +25,7 @@ const List: React.FC = () => {
       .get('/characters')
       .then(res => {
         setCharacters(res.data.data.results);
+        console.log(res.data.data);
       })
       .catch(err => console.log(err));
   }, []);
